@@ -1,0 +1,11 @@
+<h2 class="text-center">Registration form</h2>
+<br>
+<form {{action 'authenticate' on='submit'}}>
+  {{ui/form-group type='text' model=this property='email' errors=validityErrors.email required=true}}
+  {{ui/form-group type='password' model=this property='password' errors=validityErrors.password required=true}}
+  {{ui/form-group type='password' model=this property='passwordConfirmation' errors=validityErrors.passwordConfirmation required=true}}
+  <button type="submit" class="btn btn-default">Register</button>
+</form>
+<div class="sign-link">
+  {{link-to 'Go to login page' 'signin'}}
+</div>

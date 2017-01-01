@@ -1,0 +1,15 @@
+<h2 class="text-center">Login form</h2>
+<br>
+{{#if invalidCredentials}}
+    <div class="alert alert-danger">
+        <strong>Invalid username or password</strong>
+    </div>
+{{/if}}
+<form {{action 'authenticate' on='submit'}}>
+    {{ui/form-group type='text' model=this property='email' errors=validityErrors.email required=true}}
+    {{ui/form-group type='password' model=this property='password' errors=validityErrors.password required=true}}
+    <button type="submit" class="btn btn-default">Login</button>
+</form>
+<div class="sign-link">
+  {{link-to 'Go to registration page' 'signup'}}
+</div>
