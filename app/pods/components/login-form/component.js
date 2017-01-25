@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import ValidityMixin from 'auto-market/mixins/validation';
+import ValidityMixin from 'ihorse-ninja/mixins/validation';
 import constraints from './validations';
 
 export default Ember.Component.extend(ValidityMixin, {

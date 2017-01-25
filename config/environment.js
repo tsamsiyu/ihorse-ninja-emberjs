@@ -3,9 +3,9 @@
 module.exports = function(environment) {
   var ENV = {
     apiBaseUrl: 'http://localhost:3005',
-    appName: 'AutoMarket',
-    modulePrefix: 'auto-market',
-    podModulePrefix: 'auto-market/pods',
+    appName: 'IHorse-ninja',
+    modulePrefix: 'ihorse-ninja',
+    podModulePrefix: 'ihorse-ninja/pods',
     environment: environment,
     rootURL: '/',
     locationType: 'auto',

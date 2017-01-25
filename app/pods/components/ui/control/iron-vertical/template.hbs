@@ -1,0 +1,5 @@
+<div class="form-group {{if errors.length 'has-error'}}">
+  <label>{{label}}</label>
+  {{yield value}}
+  {{ui/present/errors-list errors=errors}}
+</div>

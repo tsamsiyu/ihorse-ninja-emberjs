@@ -1,11 +1,22 @@
 <h2 class="text-center">Registration form</h2>
 <br>
-<form {{action 'authenticate' on='submit'}}>
-  {{ui/form-group type='text' model=this property='email' errors=validityErrors.email required=true}}
-  {{ui/form-group type='password' model=this property='password' errors=validityErrors.password required=true}}
-  {{ui/form-group type='password' model=this property='passwordConfirmation' errors=validityErrors.passwordConfirmation required=true}}
-  <button type="submit" class="btn btn-default">Register</button>
-</form>
+
+{{#ui/iron-form actionName="authenticate"}}
+  {{#ui/control/iron-vertical model=this valueKey="email" label="Email" required=true as |value|}}
+    {{ui/input/iron-field value=value}}
+  {{/ui/control/iron-vertical}}
+
+  {{#ui/control/iron-vertical model=this valueKey="password" label="Password" required=true as |value|}}
+    {{ui/input/iron-field value=value type="password"}}
+  {{/ui/control/iron-vertical}}
+
+  {{#ui/control/iron-vertical model=this valueKey="passwordConfirmation" label="Confirm password" required=true as |value|}}
+    {{ui/input/iron-field value=value type="password"}}
+  {{/ui/control/iron-vertical}}
+
+  {{ui/iron-button type="success" text="Register"}}
+{{/ui/iron-form}}
+
 <div class="sign-link">
   {{link-to 'Go to login page' 'signin'}}
 </div>

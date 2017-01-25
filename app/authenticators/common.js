@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import Base from 'ember-simple-auth/authenticators/base';
-import config from 'auto-market/config/environment';
+import config from 'ihorse-ninja/config/environment';
 import getOwner from 'ember-getowner-polyfill';
 
 export default Base.extend({
