@@ -1,15 +1,32 @@
 import Ember from 'ember';
-import ValidityMixin from 'ihorse-ninja/mixins/validation';
-import constraints from './validations';
+import ValidationMixin from 'ihorse-ninja/mixins/validation';
+import {toPlain} from 'ihorse-ninja/lib/utils/routine';
 
-export default Ember.Component.extend(ValidityMixin, {
+export default Ember.Component.extend(ValidationMixin, {
   session: Ember.inject.service('session'),
   authenticator: 'authenticator:signup',
+  form: {},
+  validationRules: {
+    email: {
+      presence: true,
+      email: true
+    },
+    password: {
+      presence: true
+    },
+    passwordConfirmation: {
+      presence: true,
+      equality: {
+        attribute: 'password'
+      }
+    }
+  },
   actions: {
     authenticate: function() {
-      // const fields = ['email', 'password', 'passwordConfirmation'];
-      // const isValid  = this.validate(constraints.firstStep, fields);
-      //
+      const isValid  = this.validate(this.get('validationRules'), this.get('form'));
+      console.log(this.get('form.errors'));
+      // console.log('is valid', isValid);
+
       // if (isValid) {
       //   this.get('session').authenticate(this.authenticator, this.getProperties(fields)).catch((message) => {
       //     try {

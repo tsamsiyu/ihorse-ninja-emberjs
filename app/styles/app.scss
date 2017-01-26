@@ -1,7 +1,9 @@
-.sign-link {
-  padding-top: 15px;
+.has-error {
+  .error {
+    color: #eb6864;
+  }
 }
 
-.input-error {
-  color: #eb6864
+#go-to-login-link {
+  margin-top: 15px;
 }
