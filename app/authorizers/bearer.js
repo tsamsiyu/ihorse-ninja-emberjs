@@ -1,7 +1,8 @@
 import Base from 'ember-simple-auth/authorizers/base';
 
 export default Base.extend({
-  authorize: function(sessionData, block) {
+  authorize(sessionData, block) {
+    console.log('bearer', headers);
     let headers = {
       'Authorization': 'Bearer ' + sessionData.token
     };

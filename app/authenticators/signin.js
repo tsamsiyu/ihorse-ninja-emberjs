@@ -1,14 +1,9 @@
 import CommonAuth from './common';
-import config from 'ihorse-ninja/config/environment';
+import _ from 'lodash';
 
 export default CommonAuth.extend({
-  tokenEndpoint: config.apiBaseUrl + '/signin',
-  getData(options) {
-    return {
-      User: {
-        email: options.email,
-        password: options.password
-      }
-    }
+  tokenEndpoint: 'sign-in',
+  getData(data) {
+    return _.pick(data, ['email', 'password']);
   }
 });

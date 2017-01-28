@@ -40,6 +40,7 @@
     "ember-data": "2.9.0",
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.5.1",
+    "ember-lodash": "4.17.0",
     "ember-resolver": "^2.0.3",
     "ember-simple-auth": "1.1.0",
     "ember-welcome-page": "^1.0.1",
@@ -47,6 +48,7 @@
     "string-humanize": "^1.0.0"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "validate.js": "^0.10.0"
   }
 }

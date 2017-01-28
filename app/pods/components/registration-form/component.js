@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import ValidationMixin from 'ihorse-ninja/mixins/validation';
-import {toPlain} from 'ihorse-ninja/lib/utils/routine';
 
 export default Ember.Component.extend(ValidationMixin, {
   session: Ember.inject.service('session'),
@@ -14,7 +13,7 @@ export default Ember.Component.extend(ValidationMixin, {
     password: {
       presence: true
     },
-    passwordConfirmation: {
+    passwordRepeat: {
       presence: true,
       equality: {
         attribute: 'password'
@@ -24,16 +23,22 @@ export default Ember.Component.extend(ValidationMixin, {
   actions: {
     authenticate: function() {
       const isValid  = this.validate(this.get('validationRules'), this.get('form'));
-      console.log(this.get('form.errors'));
-      // console.log('is valid', isValid);
 
-      // if (isValid) {
-      //   this.get('session').authenticate(this.authenticator, this.getProperties(fields)).catch((message) => {
-      //     try {
-      //       this.set('validityErrors', JSON.parse(message));
-      //     } catch (e) { }
-      //   });
-      // }
+      if (isValid) {
+        this.get('session')
+          .authenticate(this.get('authenticator'), this.get('form'))
+          .catch((reject) => {
+            if (reject.status === 422) {
+              try {
+                this.set('form.errors', JSON.parse(reject.messages));
+              } catch (e) {
+                console.error('Unexpected errors format', reject);
+              }
+            } else {
+              alert('Ooops, something went wrong');
+            }
+        });
+      }
     }
   }
 });

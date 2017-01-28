@@ -1,55 +1,46 @@
 import Ember from 'ember';
 import Base from 'ember-simple-auth/authenticators/base';
 import config from 'ihorse-ninja/config/environment';
-import getOwner from 'ember-getowner-polyfill';
+
+const {inject, RSVP} = Ember;
 
 export default Base.extend({
-  apiState: Ember.inject.service('api-state'),
-  session: Ember.inject.service(),
+  tokenResponsePath: 'authToken',
+  session: inject.service('session'),
 
-  restore: function(data) {
-    const appAuthorizerWay = config['ember-simple-auth']['authorizer'];
-    const appAuthorizer = getOwner(this.get('session')).lookup(appAuthorizerWay);
-    return new Ember.RSVP.Promise((resolve, reject) => {
-      appAuthorizer.authorize(data, (headers) => {
-        this.get('apiState').sendRequest(headers)
-          .then((state) => {
-            if (!Ember.isEmpty(data.token) && !state.isGuest) {
-              this.get('apiState').set('state', state);
-              resolve(data);
-            } else {
-              reject();
-            }
-          }).catch((errors) => {
-            reject(errors);
-        });
-      });
-    });
+  restore(data) {
+    return new RSVP.Promise((resolve, reject) => {
+      if (!Ember.isEmpty(data.token)) {
+        resolve(data);
+      } else {
+        reject();
+      }
+    })
   },
 
-  authenticate: function(options) {
+  authenticate(options) {
+    const tokenResponsePath = this.get('tokenResponsePath');
     return new Ember.RSVP.Promise((resolve, reject) => {
       Ember.$.ajax({
-        url: this.tokenEndpoint,
+        url: this.getUrl(),
         type: 'POST',
         data: JSON.stringify(this.getData(options)),
         contentType: 'application/json;charset=utf-8',
         dataType: 'json'
       }).then((response) => {
-        if (response.token) {
+        if (response[tokenResponsePath]) {
           Ember.run(function() {
-            console.log('resolve token: ' + response.token);
-            resolve({
-              token: response.token
-            });
+            resolve({token: response[tokenResponsePath]});
           });
         } else {
           console.error('authentication response does not contain a token');
         }
       }, (xhr, status, error) => {
-        let response = xhr.responseText;
         Ember.run(function() {
-          reject(response);
+          reject({
+            status: xhr.status,
+            messages: xhr.responseText
+          });
         });
       });
     });
@@ -61,5 +52,9 @@ export default Base.extend({
 
   invalidate: function() {
     return Ember.RSVP.resolve();
-  }
+  },
+
+  getUrl() {
+    return config.apiBaseUrl + '/' + this.get('tokenEndpoint');
+  },
 });

@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    apiBaseUrl: 'http://localhost:3005',
+    apiBaseUrl: 'http://localhost:3005/v1',
     appName: 'IHorse-ninja',
     modulePrefix: 'ihorse-ninja',
     podModulePrefix: 'ihorse-ninja/pods',
@@ -26,7 +26,7 @@ module.exports = function(environment) {
     authorizer: 'authorizer:bearer',
     crossOriginWhitelist: ['http://localhost:3005/'],
     routeAfterAuthentication: '/home',
-    authenticationRoute: 'signin'
+    authenticationRoute: '/signin'
   };
 
   if (environment === 'development') {
