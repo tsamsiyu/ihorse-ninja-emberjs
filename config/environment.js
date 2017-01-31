@@ -26,7 +26,7 @@ module.exports = function(environment) {
     authorizer: 'authorizer:bearer',
     crossOriginWhitelist: ['http://localhost:3005/'],
     routeAfterAuthentication: '/home',
-    authenticationRoute: '/signin'
+    authenticationRoute: '/sales-board'
   };
 
   if (environment === 'development') {

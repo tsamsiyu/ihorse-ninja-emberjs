@@ -1,3 +1,8 @@
+@import 'sales-board';
+
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
+
 .has-error {
   .error {
     color: #eb6864;

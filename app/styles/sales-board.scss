@@ -1,0 +1,44 @@
+@mixin ad-menu-filter-block($height:60px) {
+  margin: 1px 0;
+  border-radius: 0 20px 20px 0;
+  height: $height;
+  border: 1px solid;
+  position: relative;
+  display: block;
+  box-shadow: 4px 4px 4px;
+  &:hover {
+    text-decoration: none;
+    box-shadow: 4px 4px 10px;
+  }
+  &:link {
+    text-decoration: none;
+    box-shadow: 4px 4px 10px;
+  }
+}
+
+#sales-board {
+  #ad-filtering-block {
+    position: fixed;
+    width: 20%;
+
+    #new-ad-filter-link {
+      @include ad-menu-filter-block(60px);
+      span {
+        color: #eb6864;
+        line-height: 60px;
+        margin-left: 15px;
+        font-size: 16px;
+      }
+    }
+
+    .ad-filter {
+      @include ad-menu-filter-block(60px);
+      .close-filter {
+        position: absolute;
+        right: 5px;
+        line-height: 60px;
+        font-size: 20px;
+      }
+    }
+  }
+}

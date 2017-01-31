@@ -1,0 +1,15 @@
+<a href="" class="ad-filter" style={{borderColor}} {{action "toggleFilter"}}>
+  <a href="" class="close-filter" style={{closeButtonColor}} {{action "removeFilter"}}>
+    {{fa-icon "close"}}
+  </a>
+</a>
+
+{{#if isDialogShowing}}
+  {{#modal-dialog close='closeDialog' translucentOverlay=true}}
+    {{#ui/iron-form}}
+      {{#ui/layout/iron-row}}
+        {{ui/iron-button type="success" text="Apply"}}
+      {{/ui/layout/iron-row}}
+    {{/ui/iron-form}}
+  {{/modal-dialog}}
+{{/if}}
