@@ -6,7 +6,7 @@ const {merge, inject, RSVP, set, get} = Ember;
 export default Ember.Service.extend({
   session: inject.service('session'),
 
-  sendRequest(request) {
+  send(request) {
     return new RSVP.Promise((resolve, reject) => {
       this.get('session').authorize(config['ember-simple-auth']['authorizer'], (headers) => {
         request = merge({

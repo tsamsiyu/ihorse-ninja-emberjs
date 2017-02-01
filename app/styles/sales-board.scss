@@ -16,6 +16,24 @@
   }
 }
 
+.ad-filter-dialog {
+  position: relative;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  form {
+    margin: 10px;
+    padding: 10px;
+    .form-group {
+      margin: 0;
+    }
+    button {
+      margin-top: 10px;
+      float: right;
+    }
+  }
+}
+
 #sales-board {
   #ad-filtering-block {
     position: fixed;

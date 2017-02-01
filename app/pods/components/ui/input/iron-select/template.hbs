@@ -1,0 +1,5 @@
+<select class="form-control">
+  {{#each options as |option|}}
+    {{ui/input/iron-select/iron-select-option label=option.label value=option.value selectedValue=value}}
+  {{/each}}
+</select>

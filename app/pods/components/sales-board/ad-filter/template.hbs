@@ -5,11 +5,29 @@
 </a>
 
 {{#if isDialogShowing}}
-  {{#modal-dialog close='closeDialog' translucentOverlay=true}}
+  {{#modal-dialog close='closeDialog' translucentOverlay=true container-class="ad-filter-dialog" targetAttachment='none'}}
     {{#ui/iron-form}}
-      {{#ui/layout/iron-row}}
-        {{ui/iron-button type="success" text="Apply"}}
-      {{/ui/layout/iron-row}}
+      <div class="row">
+        <div class="col-md-4">
+          {{#ui/control/iron-vertical model=filter.values valueKey="country" label="Страна" required=true as |value|}}
+            {{ui/input/iron-select options=countriesOptions selectedValue=value}}
+          {{/ui/control/iron-vertical}}
+        </div>
+        <div class="col-md-4">
+          {{#ui/control/iron-vertical model=filter.values valueKey="mark" label="Марка" required=true as |value|}}
+            {{ui/input/iron-field value=value}}
+          {{/ui/control/iron-vertical}}
+        </div>
+        <div class="col-md-4">
+          {{#ui/control/iron-vertical model=filter.values valueKey="model" label="Модель" required=true as |value|}}
+            {{ui/input/iron-field value=value}}
+          {{/ui/control/iron-vertical}}
+        </div>
+      </div>
+
+      <div class="row">
+        {{ui/iron-button type="success" text="Сохранить"}}
+      </div>
     {{/ui/iron-form}}
   {{/modal-dialog}}
 {{/if}}
