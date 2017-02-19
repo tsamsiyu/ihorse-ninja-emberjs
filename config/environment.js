@@ -1,9 +1,19 @@
 /* jshint node: true */
+var merge = require('lodash/merge');
+
+function loadEnvConfig(name) {
+  let env = {};
+  try {
+    env = require('./environments/' + name);
+  } catch (e) {}
+  return env;
+}
 
 module.exports = function(environment) {
-  var ENV = {
-    apiBaseUrl: 'http://localhost:3005/v1',
-    appName: 'IHorse-ninja',
+  const currentEnv = loadEnvConfig(environment);
+  const localEnv = loadEnvConfig('local');
+
+  var ENV = merge(currentEnv, localEnv, {
     modulePrefix: 'ihorse-ninja',
     podModulePrefix: 'ihorse-ninja/pods',
     environment: environment,
@@ -19,14 +29,18 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     }
-  };
+  });
 
   ENV['ember-simple-auth'] = {
     store: 'simple-auth-session-store:local-storage',
     authorizer: 'authorizer:bearer',
-    crossOriginWhitelist: ['http://localhost:3005/'],
+    crossOriginWhitelist: [ENV.api.host],
     routeAfterAuthentication: '/home',
     authenticationRoute: '/sales-board'
+  };
+
+  ENV.contentSecurityPolicy = {
+    'connect-src': ENV.api.host
   };
 
   if (environment === 'development') {
