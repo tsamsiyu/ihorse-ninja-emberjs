@@ -1,5 +1,5 @@
-<select class="form-control">
+<select class="form-control" onchange={{action "select" value="target.value"}}>
   {{#each options as |option|}}
-    {{ui/input/iron-select/iron-select-option label=option.label value=option.value selectedValue=value}}
+    {{ui/input/iron-select/iron-select-option label=option.label value=option.value selected=selected}}
   {{/each}}
 </select>

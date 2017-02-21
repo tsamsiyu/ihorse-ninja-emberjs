@@ -1,16 +1,19 @@
-<a href="" class="ad-filter" style={{borderColor}} {{action "toggleFilter"}}>
-  <a href="" class="close-filter" style={{closeButtonColor}} {{action "removeFilter"}}>
-    {{fa-icon "close"}}
+{{#if filter.committed}}
+  <a href="" class="ad-filter" style={{borderColor}} {{action "toggleFilter"}}>
+    {{shortDescription}}
+    <a href="" class="close-filter" style={{closeButtonColor}} {{action "removeFilter"}}>
+      {{fa-icon "close"}}
+    </a>
   </a>
-</a>
+{{/if}}
 
-{{#if isDialogShowing}}
+{{#if filter.opened}}
   {{#modal-dialog close='closeDialog' translucentOverlay=true container-class="ad-filter-dialog" targetAttachment='none'}}
     {{#ui/iron-form}}
       <div class="row">
         <div class="col-md-4">
-          {{#ui/control/iron-vertical model=filter.values valueKey="country" label="Страна" required=true as |value|}}
-            {{ui/input/iron-select options=countriesOptions selectedValue=value}}
+          {{#ui/control/iron-vertical model=filter.values valueKey="countryId" label="Страна" required=true as |value|}}
+            {{ui/input/iron-select options=countriesOptions selected=value}}
           {{/ui/control/iron-vertical}}
         </div>
         <div class="col-md-4">
@@ -26,7 +29,7 @@
       </div>
 
       <div class="row">
-        {{ui/iron-button type="success" text="Сохранить"}}
+        {{ui/iron-button type="success" text="Сохранить" click="commitFilter"}}
       </div>
     {{/ui/iron-form}}
   {{/modal-dialog}}

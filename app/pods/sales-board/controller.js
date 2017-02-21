@@ -29,7 +29,8 @@ export default Ember.Controller.extend({
     this.get('filters').pushObject({
       values: {},
       color: this.getFilterColor(),
-      opened: true
+      opened: true,
+      committed: false
     });
   },
 

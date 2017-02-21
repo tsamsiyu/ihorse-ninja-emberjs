@@ -10,7 +10,7 @@
       </a>
       <div id="ad-filters">
         {{#each filters as |filter|}}
-          {{sales-board/ad-filter filter=filter removeFilter=(action "removeFilter")}}
+          {{sales-board/ad-filter filter=filter countries=model.countries removeFilter=(action "removeFilter")}}
         {{/each}}
       </div>
     </div>
