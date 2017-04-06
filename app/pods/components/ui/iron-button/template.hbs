@@ -1,1 +1,5 @@
-<button class="btn btn-{{type}}" {{action "click"}}>{{text}}</button>
+{{#if actionMissing}}
+  <button class={{btnClass}} type="submit">{{text}}</button>
+{{else}}
+  <button class={{btnClass}} type="button" {{action "click" on="click"}}>{{text}}</button>
+{{/if}}

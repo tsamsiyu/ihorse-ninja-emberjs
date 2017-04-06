@@ -1,35 +1,16 @@
 <h2 class="text-center">Registration form</h2>
 
-{{#ui/layout/iron-row}}
+{{#layout/iron-row}}
   {{#ui/iron-form submit="authenticate"}}
-
-    {{#ui/layout/iron-row}}
-      {{#ui/control/iron-vertical model=form valueKey="email" label="Email" required=true as |value|}}
-        {{ui/input/iron-field value=value}}
-      {{/ui/control/iron-vertical}}
-    {{/ui/layout/iron-row}}
-
-    {{#ui/layout/iron-row}}
-      {{#ui/control/iron-vertical model=form valueKey="password" label="Password" required=true as |value|}}
-        {{ui/input/iron-field value=value type="password"}}
-      {{/ui/control/iron-vertical}}
-    {{/ui/layout/iron-row}}
-
-    {{#ui/layout/iron-row}}
-      {{#ui/control/iron-vertical model=form valueKey="passwordRepeat" label="Confirm password" required=true as |value|}}
-        {{ui/input/iron-field value=value type="password"}}
-      {{/ui/control/iron-vertical}}
-    {{/ui/layout/iron-row}}
-
-    {{#ui/layout/iron-row}}
-      {{ui/iron-button type="success" text="Register"}}
-    {{/ui/layout/iron-row}}
-
+    {{quick/form-control-field model=form valueKey="email" required=true}}
+    {{quick/form-control-field model=form valueKey="password" required=true type="password"}}
+    {{quick/form-control-field model=form valueKey="passwordRepeat" required=true type="password"}}
+    {{quick/form-submit}}
   {{/ui/iron-form}}
-{{/ui/layout/iron-row}}
+{{/layout/iron-row}}
 
-{{#ui/layout/iron-row}}
+{{#layout/iron-row}}
   <div id="sign-link">
     {{link-to 'Go to login page' 'signin'}}
   </div>
-{{/ui/layout/iron-row}}
+{{/layout/iron-row}}

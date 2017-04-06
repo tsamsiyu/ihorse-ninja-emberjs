@@ -15,7 +15,7 @@ export default Base.extend({
       } else {
         reject();
       }
-    })
+    });
   },
 
   authenticate(options) {
@@ -39,7 +39,7 @@ export default Base.extend({
         Ember.run(function() {
           reject({
             status: xhr.status,
-            messages: xhr.responseText
+            message: xhr.responseJSON
           });
         });
       });
@@ -55,6 +55,8 @@ export default Base.extend({
   },
 
   getUrl() {
-    return config.apiBaseUrl + '/' + this.get('tokenEndpoint');
-  },
+    const path = this.get('tokenEndpoint');
+    const api = config.api;
+    return `${api.domain}/${api.namespace}/${path}`;
+  }
 });

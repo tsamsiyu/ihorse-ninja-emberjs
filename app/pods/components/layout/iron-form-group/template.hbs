@@ -1,0 +1,7 @@
+{{#if actualLabel}}
+  <label class={{labelClass}}>{{actualLabel}}</label>
+{{/if}}
+{{yield actualValue}}
+{{#if actualErrors}}
+  {{ui/iron-errors errors=actualErrors}}
+{{/if}}

@@ -34,13 +34,13 @@ module.exports = function(environment) {
   ENV['ember-simple-auth'] = {
     store: 'simple-auth-session-store:local-storage',
     authorizer: 'authorizer:bearer',
-    crossOriginWhitelist: [ENV.api.host],
+    crossOriginWhitelist: [ENV.api.domain],
     routeAfterAuthentication: '/home',
     authenticationRoute: '/sales-board'
   };
 
   ENV.contentSecurityPolicy = {
-    'connect-src': ENV.api.host
+    'connect-src': ENV.api.domain
   };
 
   if (environment === 'development') {
