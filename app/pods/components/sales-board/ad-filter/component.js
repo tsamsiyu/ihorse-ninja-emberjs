@@ -1,24 +1,14 @@
 import Ember from 'ember';
-import computedOptions from 'iron-app/utils/computed/options';
 
-const {computed, String} = Ember;
+const {computed} = Ember;
 
 export default Ember.Component.extend({
   tagName: '',
 
-  borderColor: computed('filter.color', function () {
-    return String.htmlSafe("border-color: " + this.get('filter.color'));
-  }),
-  closeButtonColor: computed('filter.color', function () {
-    return String.htmlSafe("color: " + this.get('filter.color'));
-  }),
-  countriesOptions: computedOptions('countries'),
-  selectedCountry: computed('filter.values.countryId', function () {
-    const id = this.get('filter.values.countryId');
-    return this.get('countries').find((country) => {
-      return country.get('id') == id;
-    });
-  }),
+  borderColor: computed.interpolation(`border-color: [filter.color]`),
+  closeButtonColor: computed.interpolation(`color: [filter.color]`),
+  countriesOptions: computed.asOptions('countries'),
+  selectedCountry: computed.findBy('countries', {'id': 'filter.values.countryId'}),
   shortDescription: computed('selectedCountry', function () {
     return this.get('selectedCountry.name');
   }),
@@ -28,16 +18,21 @@ export default Ember.Component.extend({
       this.sendAction('removeFilter', this.get('filter'));
     },
     commitFilter() {
-      this.toggleProperty('filter.opened');
-      this.toggleProperty('filter.committed');
+      this.get('filter').commit();
+      this.get('filter').close();
     },
-    toggleFilter() {
-      this.toggleProperty('filter.opened');
+    openFilterDialog() {
+      if (!this.get('filter.opened')) {
+        this.get('filter').open();
+      }
     },
-    closeDialog() {
-      this.toggleProperty('filter.opened');
-      if (!this.get('filter.committed')) {
-        this.sendAction('removeFilter', this.get('filter'));
+    closeFilterDialog() {
+      if (this.get('filter.opened')) {
+        if (!this.get('filter.committed')) {
+          this.sendAction('removeFilter', this.get('filter'));
+        } else {
+          this.get('filter').close();
+        }
       }
     }
   }

@@ -1,36 +1,30 @@
 {{#if filter.committed}}
-  <a href="" class="ad-filter" style={{borderColor}} {{action "toggleFilter"}}>
+  <a href="#" class="ad-filter-new" style={{borderColor}} {{action "openFilterDialog"}}>
     {{shortDescription}}
-    <a href="" class="close-filter" style={{closeButtonColor}} {{action "removeFilter"}}>
+    <a href="#" class="ad-filter-close-dialog" style={{closeButtonColor}} {{action "removeFilter"}}>
       {{fa-icon "close"}}
     </a>
   </a>
 {{/if}}
 
 {{#if filter.opened}}
-  {{#modal-dialog close='closeDialog' translucentOverlay=true container-class="ad-filter-dialog" targetAttachment='none'}}
+  {{#ui/iron-dialog close="closeFilterDialog" containerClass="ad-filter-dialog"}}
     {{#ui/iron-form}}
-      <div class="row">
+      {{#layout/iron-row}}
         <div class="col-md-4">
-          {{#ui/control/iron-vertical model=filter.values valueKey="countryId" label="Страна" required=true as |value|}}
-            {{ui/input/iron-select options=countriesOptions selected=value}}
-          {{/ui/control/iron-vertical}}
+          {{quick/form-control-select model=filter.values valueKey="countryId" options=countriesOptions}}
         </div>
         <div class="col-md-4">
-          {{#ui/control/iron-vertical model=filter.values valueKey="mark" label="Марка" required=true as |value|}}
-            {{ui/input/iron-field value=value}}
-          {{/ui/control/iron-vertical}}
-        </div>
-        <div class="col-md-4">
-          {{#ui/control/iron-vertical model=filter.values valueKey="model" label="Модель" required=true as |value|}}
-            {{ui/input/iron-field value=value}}
-          {{/ui/control/iron-vertical}}
-        </div>
-      </div>
 
-      <div class="row">
-        {{ui/iron-button type="success" text="Сохранить" click="commitFilter"}}
-      </div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+      {{/layout/iron-row}}
+
+      {{#layout/iron-row}}
+        {{ui/iron-button type="success" text="Save" click="commitFilter"}}
+      {{/layout/iron-row}}
     {{/ui/iron-form}}
-  {{/modal-dialog}}
+  {{/ui/iron-dialog}}
 {{/if}}

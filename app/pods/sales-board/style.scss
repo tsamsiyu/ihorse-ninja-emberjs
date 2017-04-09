@@ -1,25 +1,19 @@
-@mixin ad-menu-filter-block($height:60px) {
-  margin: 1px 0;
-  border-radius: 0 20px 20px 0;
-  height: $height;
-  border: 1px solid;
-  position: relative;
-  display: block;
-  box-shadow: 4px 4px 4px;
-  &:hover {
-    text-decoration: none;
-    box-shadow: 4px 4px 10px;
-  }
-  &:link {
-    text-decoration: none;
-    box-shadow: 4px 4px 10px;
+#ads-filters-container {
+  .ad-filter-open-dialog {
+    border: 1px solid;
+    padding: 5px 5px 5px 10px;
+    border-radius: 0 10px 10px 0;
+    &:hover {
+      text-decoration: none;
+      padding-left: 15px;
+    }
+    &:link {
+      text-decoration: none;
+    }
   }
 }
 
 .ad-filter-dialog {
-  position: relative;
-  top: 25%;
-  left: 25%;
   width: 50%;
   form {
     margin: 10px;
@@ -34,29 +28,68 @@
   }
 }
 
-#sales-board {
-  #ad-filtering-block {
-    position: fixed;
-    width: 20%;
 
-    #new-ad-filter-link {
-      @include ad-menu-filter-block(60px);
-      span {
-        color: #eb6864;
-        line-height: 60px;
-        margin-left: 15px;
-        font-size: 16px;
-      }
-    }
 
-    .ad-filter {
-      @include ad-menu-filter-block(60px);
-      .close-filter {
-        position: absolute;
-        right: 5px;
-        line-height: 60px;
-        font-size: 20px;
-      }
-    }
-  }
-}
+
+//@mixin ad-menu-filter-block($height:60px) {
+//  //margin: 1px 0;
+//  //border-radius: 0 20px 20px 0;
+//  //height: $height;
+//  //border: 1px solid;
+//  //position: relative;
+//  //display: block;
+//  //box-shadow: 4px 4px 4px;
+//  //&:hover {
+//  //  text-decoration: none;
+//  //  box-shadow: 4px 4px 10px;
+//  //}
+//  //&:link {
+//  //  text-decoration: none;
+//  //  box-shadow: 4px 4px 10px;
+//  //}
+//}
+//
+//.ad-filter-dialog {
+//  position: relative;
+//  top: 25%;
+//  left: 25%;
+//  width: 50%;
+//  form {
+//    margin: 10px;
+//    padding: 10px;
+//    .form-group {
+//      margin: 0;
+//    }
+//    button {
+//      margin-top: 10px;
+//      float: right;
+//    }
+//  }
+//}
+//
+//#sales-board {
+//  #ad-filtering-block {
+//    position: fixed;
+//    width: 20%;
+//
+//    #new-ad-filter-link {
+//      @include ad-menu-filter-block(60px);
+//      span {
+//        color: #eb6864;
+//        line-height: 60px;
+//        margin-left: 15px;
+//        font-size: 16px;
+//      }
+//    }
+//
+//    .ad-filter {
+//      @include ad-menu-filter-block(60px);
+//      .close-filter {
+//        position: absolute;
+//        right: 5px;
+//        line-height: 60px;
+//        font-size: 20px;
+//      }
+//    }
+//  }
+//}

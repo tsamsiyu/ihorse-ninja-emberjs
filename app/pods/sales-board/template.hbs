@@ -1,18 +1,20 @@
 <div id="sales-board">
-  <div class="row">
-    <h1 class="text-center">Доска объявлений</h1>
-  </div>
+  {{#layout/iron-row }}
+    <h1 class="text-center">Sales board;)</h1>
+  {{/layout/iron-row }}
 
   <div class="row">
-    <div id="ad-filtering-block">
-      <a href="" id="new-ad-filter-link" {{action "addFilter"}}>
-        <span>Добавить фильтры</span>
-      </a>
-      <div id="ad-filters">
+    <section id="ads-filters-container">
+      <a href="#" class="ad-filter-open-dialog" {{action "addFilter"}}>Add new link</a>
+      <span id="ads-filters-list">
         {{#each filters as |filter|}}
-          {{!sales-board/ad-filter filter=filter countries=model.countries removeFilter=(action "removeFilter")}}
+          {{sales-board/ad-filter
+            filter=filter
+            countries=model.countries
+            removeFilter=(action "removeFilter")
+          }}
         {{/each}}
-      </div>
-    </div>
+      </span>
+    </section>
   </div>
 </div>

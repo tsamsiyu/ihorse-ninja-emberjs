@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {asOptions} from 'iron-app/lib/utils/collection/as-options';
+import asOptions from 'iron-app/utils/collection/as-options';
 
 export default function (name, label = 'name', value = 'id') {
   return Ember.computed(

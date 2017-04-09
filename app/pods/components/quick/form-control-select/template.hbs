@@ -1,0 +1,9 @@
+{{#layout/iron-form-group
+  model=model
+  valueKey=valueKey
+  errorsKey=errorsKey
+  label=label
+  required=required
+as |value|}}
+  {{ui/input/iron-select options=options selected=value label=optionLabel}}
+{{/layout/iron-form-group}}
