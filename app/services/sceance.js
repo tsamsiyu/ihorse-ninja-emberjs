@@ -9,12 +9,13 @@ export default Ember.Service.extend({
       const dataKey = `_data.${name}`;
       const data = this.get(dataKey);
       if (data === undefined) {
-        this.supplyData(name).then((resolvedData) => {
-          this.set(dataKey, resolvedData);
-          resolve(resolvedData);
-        }).catch((err) => {
-          reject(err);
-        });
+        this.supplyData(name)
+          .then((resolvedData) => {
+            this.set(dataKey, resolvedData);
+            resolve(resolvedData);
+          }).catch((err) => {
+            reject(err);
+          });
       } else {
         resolve(data);
       }

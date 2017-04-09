@@ -1,6 +1,7 @@
 import Ember from 'ember';
-import insideComputedAlias from 'ihorse-ninja/lib/computed/inside-computed-alias';
 import _ from 'lodash';
+
+const {computed} = Ember;
 
 /**
  * Example:
@@ -13,19 +14,11 @@ export default Ember.Component.extend({
   tagName: 'div',
   classNames: ['form-group'],
   labelClass: 'control-label',
-  classNameBindings: ['actualErrors:has-error'],
-
+  classNameBindings: ['modelValueErrors:has-error'],
   errorsKey: 'errors',
-  originalValue: insideComputedAlias('model', 'valueKey'),
-  originalErrorsSet: insideComputedAlias('model', 'errorsKey'),
-  originalErrors: insideComputedAlias('originalErrorsSet', 'valueKey'),
-  actualValue: Ember.computed.reads('originalValue'),
-  actualErrors: Ember.computed.reads('originalErrors'),
-  actualLabel: Ember.computed('label', 'valueKey', function () {
-    if (this.get('label')) {
-      return this.get('label');
-    } else {
-      return _.humanize(this.get('valueKey'));
-    }
-  }),
+
+  modelValue: computed.embedAlias('model', 'valueKey'),
+  modelErrors: computed.embedAlias('model', 'errorsKey'),
+  modelValueErrors: computed.embedAlias('modelErrors', 'valueKey'),
+  modelValueLabel: computed.withDefault('label', 'valueKey', _.humanize),
 });

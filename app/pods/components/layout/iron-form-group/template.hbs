@@ -1,7 +1,7 @@
-{{#if actualLabel}}
-  <label class={{labelClass}}>{{actualLabel}}</label>
+{{#if modelValueLabel}}
+  <label class={{labelClass}}>{{modelValueLabel}}</label>
 {{/if}}
-{{yield actualValue}}
-{{#if actualErrors}}
-  {{ui/iron-errors errors=actualErrors}}
+{{yield modelValue}}
+{{#if modelValueErrors}}
+  {{ui/iron-errors errors=modelValueErrors}}
 {{/if}}

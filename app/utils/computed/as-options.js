@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {optionize} from 'ihorse-ninja/lib/utils/collection';
+import {asOptions} from 'iron-app/lib/utils/collection/as-options';
 
 export default function (name, label = 'name', value = 'id') {
   return Ember.computed(
@@ -8,6 +8,6 @@ export default function (name, label = 'name', value = 'id') {
     `${name}.@each.${label}`,
     `${name}.@each.${value}`,
     function () {
-      return optionize(this.get(name), label, value);
+      return asOptions(Ember.get(this, name), label, value);
   });
-};
+}

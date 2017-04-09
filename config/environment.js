@@ -14,8 +14,10 @@ module.exports = function(environment) {
   const localEnv = loadEnvConfig('local');
 
   var ENV = merge(currentEnv, localEnv, {
-    modulePrefix: 'ihorse-ninja',
-    podModulePrefix: 'ihorse-ninja/pods',
+    appName: 'IronDock',
+    shortAppName: 'ID',
+    modulePrefix: 'iron-app',
+    podModulePrefix: 'iron-app/pods',
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
@@ -35,8 +37,9 @@ module.exports = function(environment) {
     store: 'simple-auth-session-store:local-storage',
     authorizer: 'authorizer:bearer',
     crossOriginWhitelist: [ENV.api.domain],
-    routeAfterAuthentication: '/home',
-    authenticationRoute: '/sales-board'
+    routeAfterAuthentication: '/',
+    routeIfAlreadyAuthenticated: '/',
+    authenticationRoute: '/signin'
   };
 
   ENV.contentSecurityPolicy = {
@@ -44,6 +47,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV.stackTraceLimit = 35;
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -52,6 +56,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'test') {
+    ENV.stackTraceLimit = 35;
     // Testem prefers this...
     ENV.locationType = 'none';
 

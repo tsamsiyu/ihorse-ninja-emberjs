@@ -1,4 +1,4 @@
-import {BMW, SKODA, AUDI} from 'ihorse-ninja/data/car/marks';
+import {BMW, SKODA, AUDI} from 'iron-app/data/car/marks';
 
 export const models = {};
 

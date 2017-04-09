@@ -1,21 +1,9 @@
 import _ from 'lodash';
-
-function humanize(str) {
-  if (typeof str === 'string') {
-    return _.chain(str)
-      .trim()
-      .snakeCase()
-      .capitalize()
-      .value()
-      .replace(/_id$/, '')
-      .replace(/_/g, ' ');
-  }
-  return '';
-}
+import humanize from 'iron-app/utils/string/humanize';
 
 export function initialize() {
   _.mixin({
-    'humanize': humanize
+    humanize
   });
 }
 

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import computedOptions from 'ihorse-ninja/lib/computed/options';
+import computedOptions from 'iron-app/utils/computed/options';
 
 const {computed, String} = Ember;
 

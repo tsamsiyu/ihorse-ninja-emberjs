@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import config from 'ihorse-ninja/config/environment';
+import config from 'iron-app/config/environment';
 
 export default Ember.Controller.extend({
   appName: config.appName,

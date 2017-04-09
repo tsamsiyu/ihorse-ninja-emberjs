@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 const {computed} = Ember;
 
-export default function insideComputedAlias(objectKey, objectPropertyKey) {
+export default function embedAlias(objectKey, objectPropertyKey) {
   const insideAliasName = `${objectKey}_${objectPropertyKey}_insideAlias`;
   return computed(objectKey, objectPropertyKey, insideAliasName, {
     get() {
@@ -18,5 +18,5 @@ export default function insideComputedAlias(objectKey, objectPropertyKey) {
     set(computedKey, newValue) {
       this.set(insideAliasName, newValue);
     }
-  })
+  });
 }

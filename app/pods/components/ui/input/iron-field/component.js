@@ -2,5 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   tagName: '',
-  type: 'text',
+  inputClass: 'form-control',
+  actualType: Ember.computed.withDefault('type', 'text')
 });

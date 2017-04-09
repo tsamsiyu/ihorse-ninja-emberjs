@@ -1,12 +1,12 @@
 import DS from 'ember-data';
-import Ember from 'ember';
-import config from 'ihorse-ninja/config/environment';
+// import Ember from 'ember';
+import config from 'iron-app/config/environment';
 
-const inflector = Ember.Inflector.inflector;
+// const inflector = Ember.Inflector.inflector;
 
 export default DS.JSONAPIAdapter.extend({
   namespace: 'v1',
-  host: config.api.host,
+  host: config.api.domain,
 /*  pathForType: function(modelName) {
     const lastSlashIndex = modelName.lastIndexOf('/');
     if (lastSlashIndex !== -1) {
