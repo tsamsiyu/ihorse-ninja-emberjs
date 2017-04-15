@@ -5,7 +5,7 @@ import config from 'iron-app/config/environment';
 // const inflector = Ember.Inflector.inflector;
 
 export default DS.JSONAPIAdapter.extend({
-  namespace: 'v1',
+  namespace: config.api.namespace,
   host: config.api.domain,
 /*  pathForType: function(modelName) {
     const lastSlashIndex = modelName.lastIndexOf('/');

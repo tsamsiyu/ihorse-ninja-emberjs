@@ -1,15 +1,4 @@
 @import "pods.scss";
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
-
-.has-error {
-  .error {
-    color: #eb6864;
-  }
-}
-
-#sign-link {
-  margin-top: 15px;
-}
-
 @import "ember-power-select";

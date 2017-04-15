@@ -1,5 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  optionLabel: 'label'
+  optionLabel: 'label',
+  errorsKey: 'errors',
 });

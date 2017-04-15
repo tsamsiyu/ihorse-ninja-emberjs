@@ -1,10 +1,12 @@
 {{#if filter.committed}}
-  <a href="#" class="ad-filter-new" style={{borderColor}} {{action "openFilterDialog"}}>
-    {{shortDescription}}
-    <a href="#" class="ad-filter-close-dialog" style={{closeButtonColor}} {{action "removeFilter"}}>
+  <li class="ads-filters-point">
+    <a href="#" class="ad-filter-open-dialog" {{action "openFilterDialog"}}>
+      {{shortDescription}}
+    </a>
+    <a href="#" class="ad-filter-close-dialog" {{action "removeFilter"}}>
       {{fa-icon "close"}}
     </a>
-  </a>
+  </li>
 {{/if}}
 
 {{#if filter.opened}}
@@ -12,7 +14,7 @@
     {{#ui/iron-form}}
       {{#layout/iron-row}}
         <div class="col-md-4">
-          {{quick/form-control-select model=filter.values valueKey="countryId" options=countriesOptions}}
+          {{quick/form-control-select model=filter.values valueKey="country" options=countries label="Country"}}
         </div>
         <div class="col-md-4">
 
@@ -23,7 +25,7 @@
       {{/layout/iron-row}}
 
       {{#layout/iron-row}}
-        {{ui/iron-button type="success" text="Save" click="commitFilter"}}
+        {{ui/iron-button type="success" text="Save" click="commitFilter" disabled=isSaveDisabled}}
       {{/layout/iron-row}}
     {{/ui/iron-form}}
   {{/ui/iron-dialog}}

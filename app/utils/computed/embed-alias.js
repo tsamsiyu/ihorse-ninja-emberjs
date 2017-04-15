@@ -17,6 +17,7 @@ export default function embedAlias(objectKey, objectPropertyKey) {
     },
     set(computedKey, newValue) {
       this.set(insideAliasName, newValue);
+      return newValue;
     }
   });
 }

@@ -1,5 +1,5 @@
 {{#if actionMissing}}
-  <button class={{btnClass}} type="submit">{{text}}</button>
+  <button class={{btnClass}} type="submit" disabled={{disabled}}>{{text}}</button>
 {{else}}
-  <button class={{btnClass}} type="button" {{action "click"}}>{{text}}</button>
+  <button class={{btnClass}} type="button" disabled={{disabled}} {{action "click"}}>{{text}}</button>
 {{/if}}

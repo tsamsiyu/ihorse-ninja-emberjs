@@ -3,10 +3,12 @@
     <h1 class="text-center">Sales board;)</h1>
   {{/layout/iron-row }}
 
-  <div class="row">
-    <section id="ads-filters-container">
-      <a href="#" class="ad-filter-open-dialog" {{action "addFilter"}}>Add new link</a>
-      <span id="ads-filters-list">
+  {{#layout/iron-row}}
+    {{#layout/iron-column size=3 id="left-column"}}
+      <ul id="ads-filters-list">
+        <li class="ads-filters-point">
+          <a href="#" class="ad-filter-open-dialog" {{action "addFilter"}}>Add new link</a>
+        </li>
         {{#each filters as |filter|}}
           {{sales-board/ad-filter
             filter=filter
@@ -14,7 +16,7 @@
             removeFilter=(action "removeFilter")
           }}
         {{/each}}
-      </span>
-    </section>
-  </div>
+      </ul>
+    {{/layout/iron-column}}
+  {{/layout/iron-row}}
 </div>

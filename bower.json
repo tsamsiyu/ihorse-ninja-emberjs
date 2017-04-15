@@ -5,6 +5,7 @@
     "ember-cli-shims": "0.1.1",
     "bootstrap": "3.3.7",
     "blob-polyfill": "^1.0.20150320",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "select2": "^4.0.3"
   }
 }

@@ -1,14 +1,35 @@
-#ads-filters-container {
-  .ad-filter-open-dialog {
-    border: 1px solid;
-    padding: 5px 5px 5px 10px;
-    border-radius: 0 10px 10px 0;
-    &:hover {
-      text-decoration: none;
-      padding-left: 15px;
-    }
-    &:link {
-      text-decoration: none;
+#left-column {
+  padding: 0;
+  #ads-filters-list {
+    padding: 0;
+    .ads-filters-point {
+      display: flex;
+      justify-content: space-between;
+      width: 250px;
+      border: 1px solid #eb6864;
+      border-radius: 0 10px 10px 0;
+      height: 35px;
+      margin-bottom: 1px;
+      padding-left: 2px;
+      overflow: hidden;
+      a:hover {
+        text-decoration: none;
+      }
+      a:link {
+        text-decoration: none;
+      }
+      a.ad-filter-open-dialog {
+        flex-grow: 1;
+        line-height: 34px;
+      }
+      a.ad-filter-close-dialog {
+        line-height: 34px;
+        width: 40px;
+        text-align: center;
+        border-radius: 0 10px 10px 0;
+        border-left: 1px solid;
+        background-color: #fad9dc;
+      }
     }
   }
 }
@@ -27,69 +48,3 @@
     }
   }
 }
-
-
-
-
-//@mixin ad-menu-filter-block($height:60px) {
-//  //margin: 1px 0;
-//  //border-radius: 0 20px 20px 0;
-//  //height: $height;
-//  //border: 1px solid;
-//  //position: relative;
-//  //display: block;
-//  //box-shadow: 4px 4px 4px;
-//  //&:hover {
-//  //  text-decoration: none;
-//  //  box-shadow: 4px 4px 10px;
-//  //}
-//  //&:link {
-//  //  text-decoration: none;
-//  //  box-shadow: 4px 4px 10px;
-//  //}
-//}
-//
-//.ad-filter-dialog {
-//  position: relative;
-//  top: 25%;
-//  left: 25%;
-//  width: 50%;
-//  form {
-//    margin: 10px;
-//    padding: 10px;
-//    .form-group {
-//      margin: 0;
-//    }
-//    button {
-//      margin-top: 10px;
-//      float: right;
-//    }
-//  }
-//}
-//
-//#sales-board {
-//  #ad-filtering-block {
-//    position: fixed;
-//    width: 20%;
-//
-//    #new-ad-filter-link {
-//      @include ad-menu-filter-block(60px);
-//      span {
-//        color: #eb6864;
-//        line-height: 60px;
-//        margin-left: 15px;
-//        font-size: 16px;
-//      }
-//    }
-//
-//    .ad-filter {
-//      @include ad-menu-filter-block(60px);
-//      .close-filter {
-//        position: absolute;
-//        right: 5px;
-//        line-height: 60px;
-//        font-size: 20px;
-//      }
-//    }
-//  }
-//}

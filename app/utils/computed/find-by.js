@@ -30,7 +30,11 @@ export default function (listProperty, conditions, strict = true) {
         const valueProperty = Ember.get(conditions, listItemPropertyKey);
         const itemValue = Ember.get(item, listItemPropertyKey);
         const value = Ember.get(this, valueProperty);
-        return strict ? (itemValue === value) : (itemValue == value);
+        if (strict) {
+          return itemValue === value;
+        } else {
+          return String(itemValue) === String(value);
+        }
       });
     });
   });
