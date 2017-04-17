@@ -1,3 +1,8 @@
-{{#power-select options=options selected=selected onchange=(action "select") as |option|}}
+{{#power-select
+  options=options
+  selected=selected
+  onchange=(action "select")
+  allowClear=allowClear
+as |option|}}
   {{call supplyLabel option context=this}}
 {{/power-select}}

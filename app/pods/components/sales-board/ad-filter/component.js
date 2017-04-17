@@ -1,25 +1,29 @@
 import Ember from 'ember';
 import _ from 'lodash';
 
-const {computed} = Ember;
+const { computed, observer } = Ember;
 
 export default Ember.Component.extend({
   tagName: '',
 
-  // didInsertElement() {
-  //   console.log(this.get('countries.content'));
-  // },
-
-  countriesOptions: computed.asOptions('countries'),
   borderColor: computed.interpolation(`border-color: [filter.color]`),
   closeButtonColor: computed.interpolation(`color: [filter.color]`),
-  // countriesOptions: computed.asOptions('countries'),
-  // selectedCountry: computed.findBy('countries', {'id': 'filter.values.countryId'}),
-  // isSaveDisabled: computed('filter.values', 'filter.values.@each.countryId', function () {
-  //   console.log('save disabled computed');
-  // }),
   shortDescription: computed('filter.values.country', function () {
-    return this.get('filter.values.country');
+    return [
+      this.get('filter.values.country.name'),
+      this.get('filter.values.mark.name'),
+    ].join(' | ');
+  }),
+  countryObserver: observer('filter.values.country', function () {
+    if (this.get('filter.values.country')) {
+      this.set('filter.values.mark', null);
+    }
+  }),
+  countryMarks: computed('marks.[]', 'filter.values.country', function () {
+    return this.get('marks').filter((mark) => {
+      const country = this.get('filter.values.country');
+      return !country || (mark.get('countryId') === country.get('id'));
+    });
   }),
 
   actions: {
